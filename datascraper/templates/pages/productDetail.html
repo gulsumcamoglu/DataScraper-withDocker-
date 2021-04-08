@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+  {{product.name}}
+{% endblock title %}
+  
+
+{% block content %}
+<div>
+{% include 'backButton.html' %}
+</div>
+
+
+<div class="card text-dark bg-light mb-3">
+  <div class="card-header">{{product.name|safe}}</div>
+  <div class="card-body">
+   <p > {{product.img|safe}}  </p>
+  </div>
+</div>
+
+
+{% endblock content %}
+  

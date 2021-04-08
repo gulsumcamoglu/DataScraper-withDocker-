@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+  Products
+{% endblock title %}
+  
+
+{% block content %}
+<div>
+{% include 'backButton.html' %}
+</div>
+
+{% for i in products %}
+<div class="card text-dark bg-light mb-3">
+  <div class="card-header">
+    <a href="{% url 'productDetail' id = i.id %}">
+      {{i.name|safe}}
+    </a>
+  </div>
+  <div class="card-body">
+   <p >{{i.img}}</p>  
+  </div>
+</div>
+{% empty %}
+<p>There is no any products</p>
+{% endfor %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    {% if products.has_previous %}
+    <li class="page-item ">
+      <a class="page-link" href="?page={{products.previous_page_number}}" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" >Previous</a>
+    </li>
+    {% endif %}
+    
+    <li class="page-item"><a class="page-link" href="#">{{products.number}}</a></li>
+    {% if products.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{products.next_page_number}}">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{products.paginator.num_pages}}">Last Page</a>
+    </li>
+    
+
+    {% endif %}
+    
+  </ul>
+</nav> 
+{% endblock content %}
+  

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Data Scraper
+{% endblock title %}
+  
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row ">
+      <h1 class="bigTitle" style="margin-top: 40px; text-align: center;color: blanchedalmond;">Welcome! You can enter a link</h1>
+      
+  </div>
+</div>
+
+
+  <div class="row" style="height: 400px; width: 100%; margin-top: 50px; ">
+    <div class="col-2" style="height: auto;"></div>
+    <div class="col-8" style="height: auto; background-color: #f5f5f5; border-radius: 3rem;padding-top: 80px;">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Send">
+    </form >
+    </div>
+    <div class="col-2" style="height: auto;"></div>
+  </div>
+      
+</div>
+  
+{% endblock content %}
+  
